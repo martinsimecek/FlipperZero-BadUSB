@@ -1,0 +1,159 @@
+REM Generates list of BadUSB commands in Notepad
+
+REM Start Notepad
+DELAY 1000
+GUI r
+DELAY 500
+STRINGLN notepad
+DELAY 3000
+
+REM Generate BadUSB Cheat Sheet
+STRINGLN BadUSB File Format
+STRINGLN (source: https://developer.flipper.net/flipperzero/doxygen/badusb_file_format.html)
+STRINGLN - - - - - - - - - -
+ENTER
+STRINGLN Command syntax
+STRINGLN - BadUsb app uses extended Duckyscript syntax. It is compatible with classic USB Rubber Ducky 1.0 scripts but provides some additional commands and features, such as custom USB ID, ALT+Numpad input method, SYSRQ command, and more functional keys.
+ENTER
+STRINGLN Script file format
+STRINGLN - BadUsb app can execute only text scripts from .txt files, no compilation is required. Both \n and \r\n line endings are supported. Empty lines are allowed. You can use spaces or tabs for line indentation.
+ENTER
+STRINGLN Comment line
+STRINGLN - Just a single comment line. The interpreter will ignore all text after the REM command.
+STRINGLN - Syntax:
+STRINGLN 	REM <Comment text>
+ENTER
+STRINGLN Delay
+STRINGLN - Pause script execution by a defined time.
+STRINGLN - Syntax:
+STRINGLN 	DELAY <Delay value in ms> (Single delay)
+STRINGLN 	DEFAULT_DELAY <Delay value in ms> (Add delay before every next command)
+STRINGLN 	DEFAULTDELAY <Delay value in ms> (Same as DEFAULT_DELAY)
+ENTER
+STRINGLN Special keys
+STRINGLN - Syntax:
+STRINGLN 	DOWNARROW / DOWN
+STRINGLN 	LEFTARROW / LEFT
+STRINGLN 	RIGHTARROW / RIGHT
+STRINGLN 	UPARROW / UP
+STRINGLN 	ENTER
+STRINGLN 	DELETE
+STRINGLN 	BACKSPACE
+STRINGLN 	END
+STRINGLN 	HOME
+STRINGLN 	ESCAPE / ESC
+STRINGLN 	INSERT
+STRINGLN 	PAGEUP
+STRINGLN 	PAGEDOWN
+STRINGLN 	CAPSLOCK
+STRINGLN 	NUMLOCK
+STRINGLN 	SCROLLLOCK
+STRINGLN 	PRINTSCREEN
+STRINGLN 	BREAK (Pause/Break key)
+STRINGLN 	PAUSE (Pause/Break key)
+STRINGLN 	SPACE
+STRINGLN 	TAB
+STRINGLN 	MENU (Context menu key)
+STRINGLN 	APP (Same as MENU)
+STRINGLN 	Fx (F1-F12 keys)
+ENTER
+STRINGLN Modifier keys
+STRINGLN - The following modifier keys are recognized.
+STRINGLN - Syntax:
+STRINGLN 	CTRL
+STRINGLN 	CONTROL (Same as CTRL)
+STRINGLN 	SHIFT
+STRINGLN 	ALT
+STRINGLN 	GUI
+STRINGLN 	WINDOWS (Same as GUI)
+STRINGLN - You can chain multiple modifier keys together using hyphens (`-`) or spaces.
+ENTER
+STRINGLN Key hold and release
+STRINGLN - Up to 5 keys can be hold simultaneously.
+STRINGLN - Syntax:
+STRINGLN 	HOLD <Special key or single character> (Press and hold key until RELEASE command)
+STRINGLN 	RELEASE <Special key or single character> (Release key)
+ENTER
+STRINGLN String
+STRINGLN - Syntax:
+STRINGLN 	STRING <Text string> (Print text string)
+STRINGLN 	STRINGLN <Text string> (Print text string and press enter after it)
+ENTER
+STRINGLN String delay
+STRINGLN - Delay between keypresses.
+STRINGLN - Syntax:
+STRINGLN 	STRING_DELAY <Delay value in ms> (Applied once to next appearing STRING command)
+STRINGLN 	STRINGDELAY <Delay value in ms> (Same as STRING_DELAY)
+STRINGLN 	DEFAULT_STRING_DELAY <Delay value in ms> (Apply to every appearing STRING command)
+STRINGLN 	DEFAULTSTRINGDELAY <Delay value in ms> (Same as DEFAULT_STRING_DELAY)
+ENTER
+STRINGLN Repeat
+STRINGLN - Syntax:
+STRINGLN 	REPEAT <Number of additional repeats> (Repeat previous command)
+ENTER
+STRINGLN ALT+Numpad input
+STRINGLN - On Windows and some Linux systems, you can print characters by holding ALT key and entering its code on Numpad.
+STRINGLN - Syntax:
+STRINGLN 	ALTCHAR <Character code> (Print single character)
+STRINGLN 	ALTSTRING <Text string> (Print text string using ALT+Numpad method)
+STRINGLN 	ALTCODE <Text string> (Same as ALTSTRING, presents in some Duckyscript implementations)
+ENTER
+STRINGLN SysRq
+STRINGLN - Send SysRq command
+STRINGLN - Syntax:
+STRINGLN 	SYSRQ <Single character>
+ENTER
+STRINGLN Media keys
+STRINGLN - Some Media/Consumer Control keys can be pressed with "MEDIA" command
+STRINGLN - Syntax:
+STRINGLN 	MEDIA <Media key, see list below>
+STRINGLN 	POWER
+STRINGLN 	REBOOT
+STRINGLN 	SLEEP
+STRINGLN 	LOGOFF
+STRINGLN 	EXIT
+STRINGLN 	HOME
+STRINGLN 	BACK
+STRINGLN 	FORWARD
+STRINGLN 	REFRESH
+STRINGLN 	SNAPSHOT (Take photo in a camera app)
+STRINGLN 	PLAY
+STRINGLN 	PAUSE
+STRINGLN 	PLAY_PAUSE
+STRINGLN 	NEXT_TRACK
+STRINGLN 	PREV_TRACK
+STRINGLN 	STOP
+STRINGLN 	EJECT
+STRINGLN 	MUTE
+STRINGLN 	VOLUME_UP
+STRINGLN 	VOLUME_DOWN
+STRINGLN 	FN (Fn/Globe key on Mac keyboard)
+STRINGLN 	BRIGHT_UP (Increase display brightness)
+STRINGLN 	BRIGHT_DOWN (Decrease display brightness)
+ENTER
+STRINGLN Fn/Globe key commands (Mac/iPad)
+STRINGLN - Syntax:
+STRINGLN 	GLOBE <Special key or single character>
+ENTER
+STRINGLN Wait for button press
+STRINGLN - Will wait indefinitely for a button to be pressed
+STRINGLN - Syntax:
+STRINGLN 	WAIT_FOR_BUTTON_PRESS None (Will wait for the user to press a button to continue script execution)
+ENTER
+STRINGLN USB device ID
+STRINGLN - You can set the custom ID of the Flipper USB HID device. ID command should be in the first line of script, it is executed before script run.
+STRINGLN - Syntax:
+STRINGLN 	ID <VID:PID> <Manufacturer:Product>
+STRINGLN - Example: ID 1234:abcd Flipper Devices:Flipper Zero
+ENTER
+STRINGLN Mouse Commands
+STRINGLN - Mouse movement and click commands. Mouse click commands support HOLD functionality.
+STRINGLN - Syntax:
+STRINGLN 	LEFTCLICK None
+STRINGLN 	LEFT_CLICK None (functionally same as LEFTCLICK)
+STRINGLN 	RIGHTCLICK None
+STRINGLN 	RIGHT_CLICK None (functionally same as RIGHTCLICK)
+STRINGLN 	MOUSEMOVE <x> <y>: int (move mount/direction)
+STRINGLN 	MOUSE_MOVE <x> <y>: int (functionally same as MOUSEMOVE)
+STRINGLN 	MOUSESCROLL <delta>: int (scroll distance)
+STRINGLN 	MOUSE_SCROLL <delta>: int (functionally same as MOUSESCROLL)

